@@ -1,5 +1,7 @@
 package com.jspshop.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.jspshop.domain.Color;
@@ -14,13 +16,13 @@ private SqlSession sqlSession;
 		this.sqlSession = sqlSession;
 	}
 	
-	public int insert(Color color) throws ColorException{
-		int result=0;
-		result = sqlSession.insert("Color.insert", color);
+	public void insert(Color color) throws ColorException{
+		int result = sqlSession.insert("Color.insert", color);
 		if(result<1) {
 			//에러를 일부러 일으키자 > 얘는 강요하지않는 예외라서 빨간줄 안감
 			throw new ColorException("색상 등록 실패");
 		}
-		return result;
 	}
+	
+	
 }

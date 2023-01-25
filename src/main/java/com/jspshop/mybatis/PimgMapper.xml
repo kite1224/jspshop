@@ -7,5 +7,15 @@
 		values(#{product.product_idx},#{filename})
 	
 	</insert>
+		
+		<select id="selectAll" parameterType="int" resultType="pimg">
+			select * from pimg
+			where product_idx = #{product_idx}
+	
+	</select>
+	<!-- 부모가 자식을 가져가기 위한 collection용 -->
+	<select id="selectByProduct" parameterType="int" resultType="Pimg">
+		select * from pimg where product_idx=#{product_idx}
+	</select>
 
 </mapper> 

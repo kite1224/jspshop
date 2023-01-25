@@ -6,5 +6,11 @@
 		values(#{product.product_idx},#{psize_name})
 	
 	</insert>
+	
+	<select id="selectAll" parameterType="int" resultType="Psize">
+			select * from psize
+			where product_idx = #{product_idx}
+	
+	</select>
 
 </mapper>

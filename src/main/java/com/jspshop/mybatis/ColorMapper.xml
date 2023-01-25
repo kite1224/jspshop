@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Color">
+
 	<insert id="insert" parameterType="Color">
 		insert into color(product_idx, color_name)
 		values(#{product.product_idx},#{color_name})
-	
 	</insert>
 
+
+	<select id="selectAll" parameterType="int" resultType="Color">
+			select * from Color
+			where product_idx = #{product_idx}
+	
+	</select>
+	
+	<!-- 부모가 자식을 가져가기 위한 collection용 -->
+	<select id="selectByProduct" parameterType="int" resultType="Color">
+		select * from color
+		where product_idx=#{product_idx}
+	</select>
 </mapper>

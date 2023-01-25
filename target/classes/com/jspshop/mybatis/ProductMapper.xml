@@ -11,8 +11,47 @@
 						resultType="int">
 			select last_insert_id() as product_idx
 		</selectKey>
-		
-		
 	</insert>
+	
+		<!-- category를 가져오기 위한 리절트뱁 -->
+		<resultMap type="product" id="productMap">
+			<id column="product_idx" 		  property="product_idx" />
+			<result column="product_name" property="product_name"/>
+			<result column="brand" 			  property="brand"/>
+			<result column="price" 			  property="price"/>
+			<result column="discount" 		  property="discount"/>
+			<result column="detail" 			  property="detail"/>
+			<association 
+			column="category_idx" 
+			property="category"
+			javaType="Category"
+			select="Category.selectByProduct"
+			  />
+			<!-- 하나의 상품이 거느린 자식 데이터 가져오기 color, psize, pimg --> 
+			 <collection column="product_idx" property="pimgList"
+			 	javaType="java.util.List" ofType="Pimg" select="Pimg.selectByProduct"/>
+			 	
+			<collection column="product_idx" property="colorList"
+			 	javaType="java.util.List" ofType="Color" select="Color.selectByProduct"/>
+			
+		</resultMap>
+	
+	<!-- 모든상품 가져오기 -->
+	<!-- search -->
+	<select id="selectBySearch" resultMap="productMap" parameterType="java.util.Map">
+		select * from product 
+		where ${category} like '%${keyword}%'
+	</select>
+	
+	<select id="selectAll" resultMap="productMap" parameterType="java.util.Map">
+		select * from product 
+	</select>
+	
+	<!-- 상위ㅣ카테고리에 소솏된 상품 모두 가져오기 -->
+	<select id="selectByCategory" resultMap="productMap" parameterType="int">
+		select * from product
+		where category_idx=#{category_idx}
+	</select>
+	
 	
 </mapper>
