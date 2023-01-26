@@ -10,6 +10,7 @@
 	<typeAlias type="com.jspshop.domain.Color" alias="Color"/>
 	<typeAlias type="com.jspshop.domain.Psize" alias="Psize"/>
 	<typeAlias type="com.jspshop.domain.Pimg" alias="Pimg"/>
+	<typeAlias type="com.jspshop.domain.Member" alias="Member"/>
 	
 </typeAliases>
 
@@ -29,6 +30,7 @@
   	<mapper resource="com/jspshop/mybatis/ColorMapper.xml"/>
   	<mapper resource="com/jspshop/mybatis/PsizeMapper.xml"/>
   	<mapper resource="com/jspshop/mybatis/PimgMapper.xml"/>
+  	<mapper resource="com/jspshop/mybatis/MemberMapper.xml"/>
   
   </mappers>
 
