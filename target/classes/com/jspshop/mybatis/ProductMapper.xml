@@ -53,5 +53,10 @@
 		where category_idx=#{category_idx}
 	</select>
 	
+	<!-- 상품 한 건 가져오기 -->
+	<select id="select" parameterType="int" resultMap="productMap">
+		select * from product
+		where product_idx = #{product_idx}
+	</select>
 	
 </mapper>

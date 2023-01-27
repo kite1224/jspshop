@@ -11,4 +11,5 @@ public class Member {
 	private String name;
 	private String addr1; //기본주소
 	private String addr2; //상세주소
+	private String regdate;
 }

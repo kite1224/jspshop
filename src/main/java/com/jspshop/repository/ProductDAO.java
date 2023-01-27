@@ -39,4 +39,8 @@ public class ProductDAO {
 		return  sqlSession.selectList("Product.selectByCategory", category_idx);	
 	}
 	
+	public Product select(int product_idx) {
+		return sqlSession.selectOne("Product.select",product_idx);
+	}
+	
 }
